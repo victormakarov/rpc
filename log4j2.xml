@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="XMLConfig" packages="org.apache.logging.log4j">
+  <Properties>
+    <Property name="filename">test</Property>
+    <Property name="log4jpath">./logs</Property>
+  </Properties>
+
+  <ThresholdFilter level="trace"/>
+
+  <Appenders>
+    <RollingFile name="File" fileName="${log4jpath}/${filename}.log" filePattern="${log4jpath}/${filename}-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="100 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="5"/>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <logger name="protocol.framework.packet" level="warn"/>
+    <Root level="debug">
+      <AppenderRef ref="File"/>
+    </Root>
+  </Loggers>
+
+</Configuration>

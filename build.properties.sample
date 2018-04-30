@@ -1,0 +1,3 @@
+path.variable.maven_repository=<path_to_repository>
+jdk.home.1.8=<path_to_jdk> (checked with jdk1.8.0_151)
+idea.home=<path_to_idea>
